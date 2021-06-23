@@ -5524,14 +5524,23 @@ end
 ----==========================================================================================================
 ----==========================================================================================================
 
-Namebot = (database:get(bot_id.."Twix:Name:Bot") or "تويكس")
-ArrayRdods = {
-"لابسك لتلح",
-"هاقلبي؟ كول",
-"انطم",
-"دعبل يمعود",
-"اهو شتريد ؟",
+
+
+if text == (database:get(bot_id.."Name:Bot") or "تويكس") then      
+Namebot = (database:get(bot_id.."Name:Bot") or "تويكس")
+local namebot = {
+'ۿۧهلا ؏ـمࢪي .',
+'اكلك تحبني ؟ وتصيحني هلكد',
+'ۿۧاا ڪـلبي .',
+'انا '..Namebot..' موو بوت ɵ̷̥̥᷄ˬɵ̷̥̥᷅',
+'مو كافي تصيح بوت ترا ورب اغادر',
+'عيونه',
+'ۿۧها ححب  .',
 }
+name = math.random(#namebot)
+send(msg.chat_id_, msg.id_, namebot[name]) 
+return false 
+end
 
 if text == 'بوت' then
 Namebot = (database:get(bot_id..'Name:Bot') or 'تويكس')
