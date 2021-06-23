@@ -5528,8 +5528,8 @@ if text == 'بوت' then
 Namebot = (database:get(bot_id..'Name:Bot') or 'تويكس')
 local nameee = {
 'راح نموت بكورونا ونته بعدك تصيح بوت',
-'لتخليني ارجع لحركاتي لقديمه وردا ترا اسمي '..Namebot,
-'باوع لك خليني احبك وصيحلي باسمي  '..Namebot'
+'لتخليني ارجع لحركاتي لقديمه وردا ترا اسمي '..Namebot',
+'باوع لك خليني احبك وصيحلي باسمي  '..Namebot',
 }
 send(msg.chat_id_, msg.id_,nameee[math.random(#nameee)])
 end
