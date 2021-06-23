@@ -5527,12 +5527,9 @@ end
 if text == 'بوت' then
 Namebot = (database:get(bot_id..'Name:Bot') or 'تويكس')
 local nameee = {
-'اسمي '..Namebot..'',
 'راح نموت بكورونا ونته بعدك تصيح بوت',
 'لتخليني ارجع لحركاتي لقديمه وردا ترا اسمي '..Namebot,
-'لتكول بوت اسمي '..Namebot..' 😒🔪',
-'صيحولي '..Namebot..' كافي بوت 😒🔪',
-'اسمي القميل '..Namebot..' 😚♥️'
+'باوع لك خليني احبك وصيحلي باسمي  '..Namebot'
 }
 send(msg.chat_id_, msg.id_,nameee[math.random(#nameee)])
 end
@@ -7355,36 +7352,15 @@ send(msg.chat_id_,msg.id_,"☑┇تم حذف جميع الملفات")
 return false
 end
 if text == 'نقل الاحصائيات' and DevTwix(msg) then
-local Users = database:smembers('Twix:'..bot_id.."userss")
-local Groups = database:smembers('Twix:'..bot_id..'groups') 
+local Groups = database:smembers(bot_id..'Chek:Groups') 
+local Users = database:smembers(bot_id..'User_Bot') 
 for i = 1, #Groups do
 database:sadd(bot_id..'Twix:Chek:Groups',Groups[i])  
-local list1 = database:smembers('Twix:'..bot_id..'creatorbasic:'..Groups[i])
-for k,v in pairs(list1) do
-database:sadd(bot_id.."Twix:Basic:Constructor"..Groups[i], v)
-end
-local list2 = database:smembers('Twix:'..bot_id..'creator:'..Groups[i])
-for k,v in pairs(list2) do
-database:sadd(bot_id.."Twix:Constructor"..Groups[i], v)
-end
-local list3 = database:smembers('Twix:'..bot_id..'owners:'..Groups[i])
-for k,v in pairs(list3) do
-database:sadd(bot_id.."Twix:Manager"..Groups[i], v)
-end
-local list4 = database:smembers('Twix:'..bot_id..'mods:'..Groups[i])
-for k,v in pairs(list4) do
-database:sadd(bot_id.."Twix:Mod:User"..Groups[i], v)
-end
-database:set(bot_id.."Twix:Lock:tagservrbot"..Groups[i],true)   
-list ={"Lock:Bot:kick","Lock:User:Name","Lock:hashtak","Lock:Cmd","Lock:Link","Lock:forward","Lock:Keyboard","Lock:geam","Lock:Photo","Lock:Animation","Lock:Video","Lock:Audio","Lock:vico","Lock:Sticker","Lock:Document","Lock:Unsupported","Lock:Markdaun","Lock:Contact","Lock:Spam"}
-for i,lock in pairs(list) do 
-database:set(bot_id..'Twix:'..lock..Groups[i],"del")    
-end
 end
 for i = 1, #Users do
 database:sadd(bot_id..'Twix:UsersBot',Users[i])  
 end
-send(msg.chat_id_, msg.id_,'👥┇تم نقل : '..#Groups..' كروب\n👤┇تم نقل : '..#Users..' مشترك \n🔘┇من التحديث القديم الى التحديث الجديد')
+send(msg.chat_id_, msg.id_,'⌔︙تم نقل : '..#Groups..' كروب\n⌔︙تم نقل : '..#Users..' مشترك \n⌔︙من التحديث القديم الى التحديث الجديد')
 end
 if text == 'حذف كليشه المطور' and DevTwix(msg) then
 database:del(bot_id..'Twix:Text_Dev')
