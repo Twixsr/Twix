@@ -5524,25 +5524,17 @@ end
 ----==========================================================================================================
 ----==========================================================================================================
 
-
-Namebot = (database:get(bot_id.."Twix:Name:Bot") or "تويكس")
-ArrayRdods = {
-"تراك ازعجتنا",
-"اسممممممممممييي "..Namebot,
-"؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟؟",
-"انطم",
-"ياصبر الارض",
-"اسمي "..Namebot,
-"الله يعين",
-"الله يصبرني",
-"ها ",
-"استغفر الله"
+if text == 'بوت' then
+Namebot = (database:get(bot_id..'Name:Bot') or 'تويكس')
+local nameee = {
+'اسمي '..Namebot..'',
+'راح نموت بكورونا ونته بعدك تصيح بوت',
+'لتخليني ارجع لحركاتي لقديمه وردا ترا اسمي '..Namebot,
+'لتكول بوت اسمي '..Namebot..' 😒🔪',
+'صيحولي '..Namebot..' كافي بوت 😒🔪',
+'اسمي القميل '..Namebot..' 😚♥️'
 }
-
-if text == "بوت" or text == Namebot then
-NameRandomBot = ArrayRdods[math.random(#ArrayRdods)]
-send(msg.chat_id_, msg.id_," ["..NameRandomBot.."] ") 
-return false 
+send(msg.chat_id_, msg.id_,nameee[math.random(#nameee)])
 end
 
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
@@ -6344,6 +6336,15 @@ send(msg.chat_id_, msg.id_,'📌┇تم تعين الايدي')
 end
 
 if text == 'ايدي' and AhMedMember(msg) and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if not database:sismember(bot_id..'Twix:Spam:Group'..msg.sender_user_id_,text) then
 database:sadd(bot_id.."Twix:Spam:Group"..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
@@ -6477,60 +6478,6 @@ send(msg.chat_id_, msg.id_,'🔰┇تم تنظيف *~ '..Number..'* رساله .
 end
 if (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) or (msg.content_.voice_) or (msg.content_.audio_) then      
 database:sadd(bot_id.."msg:media"..msg.chat_id_, msg.id_)
-end
-if text == ("امسح") and cleaner(msg) then  
-local list = database:smembers(bot_id.."msg:media"..msg.chat_id_)
-for k,v in pairs(list) do
-local Message = v
-if Message then
-t = "✅┇تم حذف "..k.."من الوسائط"
-DeleteMessage(msg.chat_id_,{[0]=Message})
-database:del(bot_id.."msg:media"..msg.chat_id_)
-end
-end
-if #list == 0 then
-t = "• لا يوجد ميديا في المجموعه"
-end
-send(msg.chat_id_, msg.id_, t)
-end
-if text == ("عدد الميديا") and cleaner(msg) then  
-local gmria = database:scard(bot_id.."msg:media"..msg.chat_id_)  
-send(msg.chat_id_, msg.id_,"• عدد الميديا الموجود هو (* "..gmria.." *)")
-end
-if text == "امسح" and cleaner(msg) and GetSourseMember(msg) then   
-Msgs = {[0]=msg.id_}
-local Message = msg.id_
-for i=1,200 do
-Message = Message - 1048576
-Msgs[i] = Message
-end
-tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = Msgs},function(arg,data)
-new = 0
-Msgs2 = {}
-for i=0 ,data.total_count_ do
-if data.messages_[i] and (not data.messages_[i].edit_date_ or data.messages_[i].edit_date_ ~= 0) then
-Msgs2[new] = data.messages_[i].id_
-new = new + 1
-end
-end
-DeleteMessage(msg.chat_id_,Msgs2)
-end,nil)  
-send(msg.chat_id_, msg.id_,'• تم تنظيف الميديا المعدله')
-end
-if not database:get(bot_id.."y:Twix:msg:media"..msg.chat_id_) and (msg.content_.text_) or (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) or (msg.content_.voice_) or (msg.content_.audio_) then    
-local gmedia = database:scard(bot_id.."msg:media"..msg.chat_id_)  
-if gmedia == 50 then
-local liste = database:smembers(bot_id.."msg:media"..msg.chat_id_)
-for k,v in pairs(liste) do
-local Mesge = v
-if Mesge then
-t = "✅┇تم حذف *"..k.."* من الوسائط"
-DeleteMessage(msg.chat_id_,{[0]=Mesge})
-end
-end
-send(msg.chat_id_, msg.id_, t)
-database:del(bot_id.."msg:media"..msg.chat_id_)
-end
 end
 
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
@@ -7332,7 +7279,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if DevTwix(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/TwiXtele/files_Twix/master/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -7370,7 +7317,7 @@ t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تعطيله وحذفه �
 else
 t = "*📬┇ بالتاكيد تم تعطيل وحذف ملف » {"..file.."} \n✓*"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/TwiXtele/files_Twix/master/files_Twix/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/master/files_Twix/"..file)
 if res == 200 then
 os.execute("rm -fr Twix_Files/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -7390,7 +7337,7 @@ t = "*📬┇ بالتاكيد تم تنزيل وتفعيل ملف » {"..file..
 else
 t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تنزيله وتفعيله بنجاح \n💥*"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/TwiXtele/files_Twix/master/files_Twix/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/master/files_Twix/"..file)
 if res == 200 then
 local chek = io.open("Twix_Files/"..file,'w+')
 chek:write(json_file)
