@@ -7430,7 +7430,7 @@ end
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then
 Text = [[
 🐲 • Welcome *to* Source
-🚩 • *TeAm* - [”TwiX”](t.me/DevTwix)
+🚩 • *TeAm* - [”TwiX”](t.me/ieeo3s)
  ••••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••••
 ]]
 keyboard = {} 
