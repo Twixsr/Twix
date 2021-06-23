@@ -7317,7 +7317,7 @@ t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تعطيله وحذفه �
 else
 t = "*📬┇ بالتاكيد تم تعطيل وحذف ملف » {"..file.."} \n✓*"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/master/files_Twix/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/Twixsr/Files_Twix/main/Files_Twix/"..file)
 if res == 200 then
 os.execute("rm -fr Twix_Files/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -7337,7 +7337,7 @@ t = "*📬┇ بالتاكيد تم تنزيل وتفعيل ملف » {"..file..
 else
 t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تنزيله وتفعيله بنجاح \n💥*"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/master/files_Twix/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/Twixsr/Files_Twix/main/Files_Twix/"..file)
 if res == 200 then
 local chek = io.open("Twix_Files/"..file,'w+')
 chek:write(json_file)
