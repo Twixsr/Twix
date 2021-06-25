@@ -2290,6 +2290,15 @@ Reply_Status(msg,userid,"reply","💢️┇تم ترقيته مطور ثانوي
 return false 
 end
 if text == ("حذف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and VIP_DeV(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."DEV:Sudo:T", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢️┇تم تنزيله من المطور ثانويين")  
@@ -2517,6 +2526,15 @@ send(msg.chat_id_, msg.id_, t)
 end
 
 if text == ("المحظورين") and Addictive(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 local list = database:smembers(bot_id.."Twix:Ban:User"..msg.chat_id_)
 t = "\n⛔┇قائمة محظورين المجموعه \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉•• \n"
 for k,v in pairs(list) do
@@ -4125,6 +4143,15 @@ return false
 end
 end
 if text ==("تثبيت") and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then  
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if database:sismember(bot_id.."Twix:Lock:pin",msg.chat_id_) and not Constructor(msg) then
 send(msg.chat_id_,msg.id_,"📬┇التثبيت والغاء التثبيت تم قفله من قبل المنشئين")  
 return false  
@@ -4188,6 +4215,15 @@ send(msg.chat_id_, msg.id_,"☑┇تم تعطيل جلب رابط المجموع
 return false end
 end
 if text == "الرابط" then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 local status_Link = database:get(bot_id.."Twix:Link_Group"..msg.chat_id_)
 if not status_Link then
 send(msg.chat_id_, msg.id_,"☑┇جلب الرابط معطل") 
@@ -8076,6 +8112,15 @@ end,nil)
 end,nil)
 end
 if text == 'تعطيل' and DevBot(msg) then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Twix:Chek:Groups',msg.chat_id_) then
