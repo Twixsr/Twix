@@ -8065,7 +8065,7 @@ local Text = '☑️┇تم تفعيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8130,7 +8130,7 @@ local Text = '❎┇تم تعطيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8195,7 +8195,7 @@ local Text = '☑️┇تم تفعيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8299,7 +8299,7 @@ Text = "🔰┇اهلا بك في بوت "..Namebot.." حماية المجموع
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
+{text = '⏺️| معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8354,7 +8354,7 @@ Text = [[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
+{text = '⏺️| معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8380,7 +8380,7 @@ Text = [[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
+{text = '⏺️| معرفة المزيد ؟',url="https://t.me/ieeo3s"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
