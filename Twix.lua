@@ -2675,7 +2675,7 @@ database:srem(bot_id.."Twix:Sudo:User", userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المطورين")  
 return false 
 end
-if text == ("تنزيل مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
+if text == ("تنزيل مالك") and AhMedMember(msg) and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:Basic:Constructor23"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم تنزيله من المالك")  
@@ -2815,7 +2815,7 @@ send(msg.chat_id_, msg.id_,texting[Textes])
 end
 end
 
-if text == ("رفع مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
+if text == ("رفع مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) and AhMedMember(msg) then 
 function Function_Twix(extra, result, success)
 database:sadd(bot_id.."Twix:Basic:Constructor23"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم ترقيته مالك")  
@@ -2907,7 +2907,7 @@ return false
 end
 end,nil)   
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and not DevBot(msg) then 
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and not DevBot(msg) and AhMedMember(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 function Function_Twix(extra, result, success)
@@ -2919,7 +2919,7 @@ return false
 end
 end,nil)   
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and not DevBot(msg) then 
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and not DevBot(msg) and AhMedMember(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 local username = text:match("^تنزيل منشئ اساسي @(.*)$")
@@ -2937,7 +2937,7 @@ return false
 end
 end,nil)   
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and not DevBot(msg) then 
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and not DevBot(msg) and AhMedMember(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
@@ -3006,7 +3006,7 @@ database:sadd(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم ترقيته منشئ اساسي")  
 return false
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructoryyu(msg) then 
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructoryyu(msg) and AhMedMember(msg) then 
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم تنزيله من المنشئين")  
@@ -3014,7 +3014,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and Constructoryyu(msg) then 
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and Constructoryyu(msg) and AhMedMember(msg) then 
 local username = text:match("^تنزيل منشئ اساسي @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -3028,7 +3028,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and Constructoryyu(msg) then 
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and Constructoryyu(msg) and AhMedMember(msg) then 
 local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
 database:srem(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المنشئين")  
@@ -3099,7 +3099,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ @(.*)$") and BasicConstructor(msg) then 
+if text and text:match("^تنزيل منشئ @(.*)$") and BasicConstructor(msg) and AhMedMember(msg) then 
 local username = text:match("^تنزيل منشئ @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -3112,7 +3112,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ (%d+)$") and BasicConstructor(msg) then 
+if text and text:match("^تنزيل منشئ (%d+)$") and BasicConstructor(msg) and AhMedMember(msg) then 
 local userid = text:match("^تنزيل منشئ (%d+)$")
 database:srem(bot_id.."Twix:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المنشئين")  
@@ -6139,7 +6139,7 @@ send(msg.chat_id_, msg.id_,'☑┇تم تفعيل اوامر التحشيش')
 database:del(bot_id.."Twix:Fun_Bots"..msg.chat_id_)
 end
 
-if text == "تفعيل كول" and Owner(msg) then
+if text == "تفعيل كول" and Owner(msg) and AhMedMember(msg) then
 send(msg.chat_id_, msg.id_, '☑️┇تم تفعيل امر كول')
 database:set(bot_id.."Twix:koL_Bots"..msg.chat_id_,"close")
 end
@@ -6190,7 +6190,7 @@ if text == 'تعطيل الايدي بالصوره' and Owner(msg) then
 database:set(bot_id..'Twix:Lock:ID:Bot:Photo'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل الايدي بالصوره') 
 end
-if text == 'تفعيل اليوتيوب' and Owner(msg) then   
+if text == 'تفعيل اليوتيوب' and Owner(msg) and AhMedMember(msg)  then   
 database:del(bot_id..'dw:bot:api'..msg.chat_id_) 
 Text = '\n تم تفعيل اليوتيوبات' 
 send(msg.chat_id_, msg.id_,Text) 
@@ -8010,7 +8010,7 @@ end
 
 end ---- Chat_Type = 'GroupBot' 
 end ---- Chat_Type = 'GroupBot' 
-if text == 'تفعيل' and DevBot(msg) and then 
+if text == 'تفعيل' and DevBot(msg) and AhMedMember(msg) then 
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
@@ -8075,16 +8075,7 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text == 'تعطيل' and DevBot(msg) then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == 'تعطيل' and DevBot(msg) and AhMedMember(msg) then 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Twix:Chek:Groups',msg.chat_id_) then
@@ -8130,16 +8121,7 @@ end
 end,nil) 
 end,nil) 
 end
-if text == 'تفعيل' and not DevBot(msg) and not database:get(bot_id..'Twix:Free:Add:Bots') then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == 'تفعيل' and not DevBot(msg) and not database:get(bot_id..'Twix:Free:Add:Bots') and AhMedMember(msg) then 
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
