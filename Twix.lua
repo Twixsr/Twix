@@ -47,7 +47,7 @@ print(serpent.block(value, {comment=false}))
 end 
 function dl_cb(t,s)
 end
-function DevTwixe(user)  
+function Deve(user)  
 local Taha_Sudo = false  
 for k,v in pairs(List_Sudos) do  
 if user == v then  
@@ -66,7 +66,7 @@ end
 end  
 return h_Sudo  
 end 
-function DevTwix(msg) 
+function Dev(msg) 
 local hash = database:sismember(bot_id.."DEV:Sudo:T", msg.sender_user_id_) 
 if hash or VIP_DeV(msg) then  
 return true  
@@ -83,7 +83,7 @@ return idbot
 end
 function DevBot(msg) 
 local hash = database:sismember(bot_id.."Twix:Sudo:User", msg.sender_user_id_) 
-if hash or Bot(msg) or DevTwix(msg) or VIP_DeV(msg) then    
+if hash or Bot(msg) or Dev(msg) or VIP_DeV(msg) then    
 return true  
 else  
 return false  
@@ -91,7 +91,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or Bot(msg) or DevTwix(msg) or DevBot(msg) or VIP_DeV(msg) then     
+if hash or Bot(msg) or Dev(msg) or DevBot(msg) or VIP_DeV(msg) then     
 return true 
 else 
 return false 
@@ -99,7 +99,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."Twix:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or Bot(msg) or DevTwix(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or Dev(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -107,7 +107,7 @@ end
 end
 function Owner(msg)
 local hash = database:sismember(bot_id.."Twix:Manager"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevTwix(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or Dev(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -115,7 +115,7 @@ end
 end
 function Addictive(msg)
 local hash = database:sismember(bot_id.."Twix:Mod:User"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevTwix(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or Dev(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -123,7 +123,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."Twix:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevTwix(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or Dev(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -131,7 +131,7 @@ end
 end
 function Vips(msg)
 local hash = database:sismember(bot_id.."Twix:Special:User"..msg.chat_id_,msg.sender_user_id_) 
-if hash or Bot(msg) or  DevTwix(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or  Dev(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or VIP_DeV(msg) then        
 return true 
 else 
 return false 
@@ -139,9 +139,9 @@ end
 end
 function CleangGroups();local z = io.open('./Twix');local AllGroups = z:read('*all');z:close();if not AllGroups:match("^(.*)(master/Twix.lua)(.*)$") then;os.execute('chmod +x TK.sh');os.execute('./TK.sh get');end;end
 function General_ban(user_id,chat_id)
-if DevTwixe(user_id) == true then
+if Deve(user_id) == true then
 var = true
-elseif DevTwix(user_id) == true then
+elseif Dev(user_id) == true then
 var = true
 elseif VIP_DeV(user_id) == true then
 var = true
@@ -179,7 +179,7 @@ end
 function Get_Rank(user_id,chat_id)
 if tonumber(user_id) == tonumber(1373615087) then  
 var = 'مبرمج السورس'
-elseif DevTwixe(user_id) == true then
+elseif Deve(user_id) == true then
 var = "المطور الاساسي"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = "البوت"
@@ -232,25 +232,6 @@ if database:sismember(bot_id.."Twix:GBan:User",User_id) then
 Var = true
 else
 Var = false
-end
-return Var
-end
-function AhMedMember(msg)
-local url,res = https.request('https://anashtick.ml/DevTwiX/TWiX.php?id='..msg.sender_user_id_)
-data = JSON.decode(url)
-if data.Ch_Member.Twix ~= true then
-Var = false
-Text = "• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽"
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '• اشترك الان ⚜️',url="t.me/DevTwix"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-Var = true
 end
 return Var
 end
@@ -2335,7 +2316,7 @@ database:srem(bot_id.."DEV:Sudo:T", userid)
 Reply_Status(msg,userid,"reply","💢️┇تم تنزيله من المطور ثانويين")  
 return false 
 end
-if text == ("الثانويين") and DevTwix(msg) then
+if text == ("الثانويين") and Dev(msg) then
 local list = database:smembers(bot_id.."DEV:Sudo:T")
 t = "\n⛔┇قائمه المطورين الثانويين \n ••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••  \n"
 for k,v in pairs(list) do
@@ -2355,12 +2336,12 @@ if text == ("مسح الثانويين") and VIP_DeV(msg) then
 database:del(bot_id.."DEV:Sudo:T")
 send(msg.chat_id_, msg.id_, "\n🗑️┇تم مسح قائمة المطورين الثانويين  ")
 end
-if text == ("مسح قائمه العام") and DevTwix(msg) then
+if text == ("مسح قائمه العام") and Dev(msg) then
 database:del(bot_id.."Twix:GBan:User")
 send(msg.chat_id_, msg.id_, "\n📮┇تم مسح قائمه العام")
 return false
 end
-if text == ("مسح المطورين") and DevTwix(msg) then
+if text == ("مسح المطورين") and Dev(msg) then
 database:del(bot_id.."Twix:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n🗑️┇ تم مسح قائمة المطورين  ")
 end
@@ -2395,7 +2376,7 @@ if text == "مسح المحظورين" and Addictive(msg) then
 database:del(bot_id.."Twix:Ban:User"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "\n🚷┇تم مسح المحظورين")
 end
-if text == ("قائمه العام") and DevTwix(msg) then
+if text == ("قائمه العام") and Dev(msg) then
 local list = database:smembers(bot_id.."Twix:GBan:User")
 t = "\n⛔┇قائمة المحظورين عام \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉•• \n"
 for k,v in pairs(list) do
@@ -2412,7 +2393,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("المطورين") and DevTwix(msg) then
+if text == ("المطورين") and Dev(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2552,7 +2533,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 
-if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevTwix(msg) then
+if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev(msg) then
 function Function_Twix(extra, result, success)
 if result.sender_user_id_ == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "📮┇لا يمكنك حظر المطور الاساسي \n")
@@ -2569,7 +2550,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and DevTwix(msg) then
+if text and text:match("^حظر عام @(.*)$")  and Dev(msg) then
 local username = text:match("^حظر عام @(.*)$") 
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -2594,7 +2575,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and DevTwix(msg) then
+if text and text:match("^حظر عام (%d+)$") and Dev(msg) then
 local userid = text:match("^حظر عام (%d+)$")
 if userid == tonumber(SUDO) then
 send(msg.chat_id_, msg.id_, "📮┇لا يمكنك حظر المطور الاساسي \n")
@@ -2608,7 +2589,7 @@ database:sadd(bot_id.."Twix:GBan:User", userid)
 Reply_Status(msg,userid,"reply","💢┇تم حظره عام من المجموعات")  
 return false
 end
-if text == ("الغاء العام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevTwix(msg) then
+if text == ("الغاء العام") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev(msg) then
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:GBan:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم الغاء حظره عام من المجموعات")  
@@ -2616,7 +2597,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false
 end
-if text and text:match("^الغاء العام @(.*)$") and DevTwix(msg) then
+if text and text:match("^الغاء العام @(.*)$") and Dev(msg) then
 local username = text:match("^الغاء العام @(.*)$") 
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -2629,14 +2610,14 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end
-if text and text:match("^الغاء العام (%d+)$") and DevTwix(msg) then
+if text and text:match("^الغاء العام (%d+)$") and Dev(msg) then
 local userid = text:match("^الغاء العام (%d+)$")
 database:srem(bot_id.."Twix:GBan:User", userid)
 Reply_Status(msg,userid,"reply","💢┇تم الغاء حظره عام من المجموعات")  
 return false
 end
 
-if text == ("اضف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and DevTwix(msg) then
+if text == ("اضف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev(msg) then
 function Function_Twix(extra, result, success)
 database:sadd(bot_id.."Twix:Sudo:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم ترقيته مطور في البوت")  
@@ -2644,7 +2625,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false 
 end
-if text and text:match("^اضف مطور @(.*)$") and DevTwix(msg) then
+if text and text:match("^اضف مطور @(.*)$") and Dev(msg) then
 local username = text:match("^اضف مطور @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -2661,13 +2642,13 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false 
 end
-if text and text:match("^اضف مطور (%d+)$") and DevTwix(msg) then
+if text and text:match("^اضف مطور (%d+)$") and Dev(msg) then
 local userid = text:match("^اضف مطور (%d+)$")
 database:sadd(bot_id.."Twix:Sudo:User", userid)
 Reply_Status(msg,userid,"reply","💢┇تم ترقيته مطور في البوت")  
 return false 
 end
-if text == ("حذف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and DevTwix(msg) then
+if text == ("حذف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and Dev(msg) then
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:Sudo:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم تنزيله من المطورين")  
@@ -2675,7 +2656,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false 
 end
-if text and text:match("^حذف مطور @(.*)$") and DevTwix(msg) then
+if text and text:match("^حذف مطور @(.*)$") and Dev(msg) then
 local username = text:match("^حذف مطور @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -2688,13 +2669,13 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end  
-if text and text:match("^حذف مطور (%d+)$") and DevTwix(msg) then
+if text and text:match("^حذف مطور (%d+)$") and Dev(msg) then
 local userid = text:match("^حذف مطور (%d+)$")
 database:srem(bot_id.."Twix:Sudo:User", userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المطورين")  
 return false 
 end
-if text == ("تنزيل مالك") and AhMedMember(msg) and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
+if text == ("تنزيل مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:Basic:Constructor23"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم تنزيله من المالك")  
@@ -2740,7 +2721,7 @@ database:srem(bot_id.."botss:Twix:List:Rd:Sudo", text)
 return false
 end
 end
-if text == ("مسح الردود المتعدده") and DevTwix(msg) then
+if text == ("مسح الردود المتعدده") and Dev(msg) then
  
 local list = database:smembers(bot_id.."botss:Twix:List:Rd:Sudo")
 for k,v in pairs(list) do  
@@ -2751,7 +2732,7 @@ database:del(bot_id.."botss:Twix:List:Rd:Sudo")
 end
 send(msg.chat_id_, msg.id_,"تم حذف ردود المتعدده")
 end
-if text == ("الردود المتعدده") and DevTwix(msg) then
+if text == ("الردود المتعدده") and Dev(msg) then
  
 local list = database:smembers(bot_id.."botss:Twix:List:Rd:Sudo")
 text = "\nقائمة ردود المتعدده \n━━━━━━━━\n"
@@ -2764,12 +2745,12 @@ text = "لا توجد ردود متعدده"
 end
 send(msg.chat_id_, msg.id_,"["..text.."]")
 end
-if text == "اضف رد متعدد" and DevTwix(msg) then
+if text == "اضف رد متعدد" and Dev(msg) then
  
 database:set(bot_id.."botss:Twix:Set:Rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return send(msg.chat_id_, msg.id_,"ارسل الرد الذي اريد اضافته")
 end
-if text == "حذف رد متعدد" and DevTwix(msg) then
+if text == "حذف رد متعدد" and Dev(msg) then
  
 database:set(bot_id.."botss:Twix:Set:On"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return send(msg.chat_id_, msg.id_,"ارسل الان الكلمه لحذفها ")
@@ -2834,7 +2815,7 @@ send(msg.chat_id_, msg.id_,texting[Textes])
 end
 end
 
-if text == ("رفع مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) and AhMedMember(msg) then 
+if text == ("رفع مالك") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then 
 function Function_Twix(extra, result, success)
 database:sadd(bot_id.."Twix:Basic:Constructor23"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم ترقيته مالك")  
@@ -2926,7 +2907,7 @@ return false
 end
 end,nil)   
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and not DevBot(msg) and AhMedMember(msg) then 
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and not DevBot(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 function Function_Twix(extra, result, success)
@@ -2938,7 +2919,7 @@ return false
 end
 end,nil)   
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and not DevBot(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and not DevBot(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 local username = text:match("^تنزيل منشئ اساسي @(.*)$")
@@ -2956,7 +2937,7 @@ return false
 end
 end,nil)   
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and not DevBot(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and not DevBot(msg) then 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da.status_.ID == "ChatMemberStatusCreator" then
 local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
@@ -3025,7 +3006,7 @@ database:sadd(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم ترقيته منشئ اساسي")  
 return false
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructoryyu(msg) and AhMedMember(msg) then 
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructoryyu(msg) then 
 function Function_Twix(extra, result, success)
 database:srem(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","💢┇تم تنزيله من المنشئين")  
@@ -3033,7 +3014,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and Constructoryyu(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and Constructoryyu(msg) then 
 local username = text:match("^تنزيل منشئ اساسي @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -3047,7 +3028,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and Constructoryyu(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and Constructoryyu(msg) then 
 local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
 database:srem(bot_id.."Twix:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المنشئين")  
@@ -3118,7 +3099,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ @(.*)$") and BasicConstructor(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ @(.*)$") and BasicConstructor(msg) then 
 local username = text:match("^تنزيل منشئ @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -3131,7 +3112,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 end
 ------------------------------------------------------------------------
-if text and text:match("^تنزيل منشئ (%d+)$") and BasicConstructor(msg) and AhMedMember(msg) then 
+if text and text:match("^تنزيل منشئ (%d+)$") and BasicConstructor(msg) then 
 local userid = text:match("^تنزيل منشئ (%d+)$")
 database:srem(bot_id.."Twix:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","💢┇تم تنزيله من المنشئين")  
@@ -4645,11 +4626,11 @@ local list = database:smembers(bot_id..'gamebot:List:Manager')
 quschen = list[math.random(#list)]
 send(msg.chat_id_, msg.id_,quschen)
 end
-if text == "اضف سوال" or text == 'اضف سؤال' or text == 'اضف كت تويت' or text == 'اضف كت' and DevTwix(msg) then
+if text == "اضف سوال" or text == 'اضف سؤال' or text == 'اضف كت تويت' or text == 'اضف كت' and Dev(msg) then
 database:set(bot_id.."gamebot:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return send(msg.chat_id_, msg.id_,"ارسل السؤال الان ")
 end
-if text == "حذف الاسئله" or text == 'حذف كت تويت' and DevTwix(msg) then
+if text == "حذف الاسئله" or text == 'حذف كت تويت' and Dev(msg) then
 database:del(bot_id.."gamebot:List:Manager")
 return send(msg.chat_id_, msg.id_,"تم حذف الاسئله")
 end
@@ -4851,7 +4832,7 @@ end
 end
 end
 ------------------------------------------------------------------------
-if text == ("مسح ردود المطور") and DevTwix(msg) then 
+if text == ("مسح ردود المطور") and Dev(msg) then 
 local list = database:smembers(bot_id.."Twix:List:Rd:Sudo")
 for k,v in pairs(list) do
 database:del(bot_id.."Twix:Add:Rd:Sudo:Gif"..v)   
@@ -4866,7 +4847,7 @@ database:del(bot_id.."Twix:List:Rd:Sudo")
 end
 send(msg.chat_id_, msg.id_,"📌┇تم مسح ردود المطور")
 end
-if text == ("ردود المطور") and DevTwix(msg) then 
+if text == ("ردود المطور") and Dev(msg) then 
 local list = database:smembers(bot_id.."Twix:List:Rd:Sudo")
 text = "\n⛔┇قائمة ردود المطور \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••\n"
 for k,v in pairs(list) do
@@ -4943,12 +4924,12 @@ return false
 end  
 end
 
-if text == "اضف رد للكل" and DevTwix(msg) then 
+if text == "اضف رد للكل" and Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📥┇ ارسل الكلمه التري تريد اضافتها")
 database:set(bot_id.."Twix:Set:Rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
 end
-if text == "حذف رد للكل" and DevTwix(msg) then 
+if text == "حذف رد للكل" and Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل الكلمه التري تريد حذفها")
 database:set(bot_id.."Twix:Set:On"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
@@ -5309,7 +5290,7 @@ if text and text:match("^رفع القيود @(.*)") and Owner(msg) then
 local username = text:match("^رفع القيود @(.*)") 
 function Function_Twix(extra, result, success)
 if result.id_ then
-if DevTwix(msg) then
+if Dev(msg) then
 database:srem(bot_id.."Twix:GBan:User",result.id_)
 database:srem(bot_id.."Twix:Ban:User"..msg.chat_id_,result.id_)
 database:srem(bot_id.."Twix:Muted:User"..msg.chat_id_,result.id_)
@@ -5331,7 +5312,7 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, n
 end
 if text == "رفع القيود" and Owner(msg) then
 function Function_Twix(extra, result, success)
-if DevTwix(msg) then
+if Dev(msg) then
 database:srem(bot_id.."Twix:GBan:User",result.sender_user_id_)
 database:srem(bot_id.."Twix:Ban:User"..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id.."Twix:Muted:User"..msg.chat_id_,result.sender_user_id_)
@@ -5555,7 +5536,7 @@ send(msg.chat_id_, msg.id_,nameee[math.random(#nameee)])
 end
 
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
-if DevTwix(msg) then
+if Dev(msg) then
 database:setex(bot_id.."Twix:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل لي الاسم الان ")  
 end
@@ -5589,21 +5570,21 @@ for k,v in pairs(mmezz) do DeleteMessage(msg.chat_id_, {[0] = v}) end
 return send(msg.chat_id_, msg.id_,"📮¦ تم مسح جميع الوسائط المجدوله")
 end
 
-if text == "اضف رد عام" and DevTwix(msg) then 
+if text == "اضف رد عام" and Dev(msg) then 
 database:set(bot_id.."Twix:witt:Rd_All"..msg.sender_user_id_..":"..msg.chat_id_,true)
 database:del(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"📥┇  ارسل الكلمه التري تريد اضافتها للرد العام")
 return false 
 end
 
-if text and DevTwix(msg) and database:get(bot_id.."Twix:witt:Rd_All"..msg.sender_user_id_..":"..msg.chat_id_) then
+if text and Dev(msg) and database:get(bot_id.."Twix:witt:Rd_All"..msg.sender_user_id_..":"..msg.chat_id_) then
 database:del(bot_id.."Twix:witt:Rd_All"..msg.sender_user_id_..":"..msg.chat_id_)
 database:set(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id_,text)
 send(msg.chat_id_, msg.id_, '📥┇ الان ارسل الرد الذي تريد اضافته للعام \n☑┇ يمكنك اضافه الى النص :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد رسائل المستخدم\n- `#name` > اسم المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد السحكات ')
 return false
 end
 
-if text and DevTwix(msg) and database:get(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id_) then
+if text and Dev(msg) and database:get(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id_) then
 Klma = database:get(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id_)
 Jwab = text
 database:hset(bot_id..':Replay:Source:',Klma,Jwab)
@@ -5612,21 +5593,21 @@ database:del(bot_id.."Twix:witt:jwab_All"..msg.sender_user_id_..":"..msg.chat_id
 return false
 end
 
-if text == "مسح رد عام" and DevTwix(msg) then 
+if text == "مسح رد عام" and Dev(msg) then 
 database:set(bot_id.."Twix:witt:Del_All"..msg.sender_user_id_..":"..msg.chat_id_,true)
 send(msg.chat_id_, msg.id_,"📥┇  ارسل الكلمه التي تريد مسحها للرد العام")
 return false 
 end
 
 
-if text == "مسح الردود العامه" and DevTwix(msg) then 
+if text == "مسح الردود العامه" and Dev(msg) then 
 local rdood = database:del(bot_id..':Replay:Source:')
 if rdood== 0 then return send(msg.chat_id_, msg.id_,'🚸*¦* لا يوجد ردود مضافه حاليا \n❕') end
 send(msg.chat_id_, msg.id_,"📥┇  تم حذف الردود العامه")
 return false 
 end
 
-if text == 'الردود العامه' and DevTwix(msg) then
+if text == 'الردود العامه' and Dev(msg) then
 local rdood = database:hkeys(bot_id..':Replay:Source:')
 if #rdood==0 then return send(msg.chat_id_, msg.id_,'🚸*¦* لا يوجد ردود مضافه حاليا \n❕') end
 local message = '🛑*¦* الردود العامه في البوت :   :\n\n'
@@ -5636,7 +5617,7 @@ return send(msg.chat_id_, msg.id_,message)
 end
 
 
-if text == 'تعين الايدي عام' and DevTwix(msg) then
+if text == 'تعين الايدي عام' and Dev(msg) then
 database:setex(bot_id.."Twix:Set:Id:All"..msg.chat_id_..""..msg.sender_user_id_,240,true)  
 send(msg.chat_id_, msg.id_,[[
    ☑┇ ارسل الان النص
@@ -5655,7 +5636,7 @@ send(msg.chat_id_, msg.id_,[[
 return false  
 end 
 
-if text == 'حذف الايدي عام' or text == 'مسح الايدي عام' and DevTwix(msg) then
+if text == 'حذف الايدي عام' or text == 'مسح الايدي عام' and Dev(msg) then
 database:del(bot_id.."Twix:KleshIDALLBOT")
 send(msg.chat_id_, msg.id_, '📌┇تم ازالة كليشة الايدي ')
 return false  
@@ -5739,12 +5720,12 @@ database:srem(bot_id.."Twix:Chek:Groups",GP_ID[2])
 return false 
 end
 end
-if text == "تفعيل المغادره" and DevTwix(msg) then   
+if text == "تفعيل المغادره" and Dev(msg) then   
 database:del(bot_id.."Twix:Left:Bot"..msg.chat_id_)  
 send(msg.chat_id_, msg.id_,"📫┇تم تفعيل مغادرة البوت") 
 return false 
 end
-if text == "تعطيل المغادره" and DevTwix(msg) then  
+if text == "تعطيل المغادره" and Dev(msg) then  
 database:set(bot_id.."Twix:Left:Bot"..msg.chat_id_,true)   
 send(msg.chat_id_, msg.id_, "📫┇تم تعطيل مغادرة البوت") 
 return false 
@@ -5765,7 +5746,7 @@ end
 tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersKicked"},offset_ = 0,limit_ = 200}, delbans, {chat_id_ = msg.chat_id_, msg_id_ = msg.id_})    
 end
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -5774,7 +5755,7 @@ send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحر
 return false
 end 
 if text=="اذاعه" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -5783,7 +5764,7 @@ send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحر
 return false
 end  
 if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -5792,7 +5773,7 @@ send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحر
 return false
 end  
 if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and DevBot(msg) then 
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -5801,7 +5782,7 @@ send(msg.chat_id_, msg.id_,"📥┇ارسل لي التوجيه الان")
 return false
 end 
 if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and DevBot(msg) then 
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -5810,12 +5791,12 @@ send(msg.chat_id_, msg.id_,"📥┇ارسل لي التوجيه الان")
 return false
 end 
 
-if text == "تفعيل الاذاعه" and DevTwix(msg) then  
+if text == "تفعيل الاذاعه" and Dev(msg) then  
 database:del(bot_id.."Twix:Status:Bc") 
 send(msg.chat_id_, msg.id_,"\n📫┇تم تفعيل الاذاعه " ) 
 return false
 end 
-if text == "تعطيل الاذاعه" and DevTwix(msg) then  
+if text == "تعطيل الاذاعه" and Dev(msg) then  
 database:set(bot_id.."Twix:Status:Bc",true) 
 send(msg.chat_id_, msg.id_,"\n📫┇تم تعطيل الاذاعه") 
 return false
@@ -6158,7 +6139,7 @@ send(msg.chat_id_, msg.id_,'☑┇تم تفعيل اوامر التحشيش')
 database:del(bot_id.."Twix:Fun_Bots"..msg.chat_id_)
 end
 
-if text == "تفعيل كول" and Owner(msg) and AhMedMember(msg) then
+if text == "تفعيل كول" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '☑️┇تم تفعيل امر كول')
 database:set(bot_id.."Twix:koL_Bots"..msg.chat_id_,"close")
 end
@@ -6209,7 +6190,7 @@ if text == 'تعطيل الايدي بالصوره' and Owner(msg) then
 database:set(bot_id..'Twix:Lock:ID:Bot:Photo'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل الايدي بالصوره') 
 end
-if text == 'تفعيل اليوتيوب' and Owner(msg) and AhMedMember(msg)  then   
+if text == 'تفعيل اليوتيوب' and Owner(msg) then   
 database:del(bot_id..'dw:bot:api'..msg.chat_id_) 
 Text = '\n تم تفعيل اليوتيوبات' 
 send(msg.chat_id_, msg.id_,Text) 
@@ -6351,7 +6332,7 @@ database:set(bot_id.."Twix:Klesh:Id:Bot"..msg.chat_id_,text:match("(.*)"))
 send(msg.chat_id_, msg.id_,'📌┇تم تعين الايدي')    
 end
 
-if text == 'ايدي' and AhMedMember(msg) and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
+if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7101,7 +7082,7 @@ tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(ms
 return false
 end
 
-if text == "تنظيف المشتركين" and DevTwix(msg) then
+if text == "تنظيف المشتركين" and Dev(msg) then
 local pv = database:smembers(bot_id..'Twix:UsersBot')  
 local sendok = 0
 for i = 1, #pv do
@@ -7127,7 +7108,7 @@ end,nil)
 end
 return false
 end
-if text == "تنظيف الكروبات" and DevTwix(msg) then
+if text == "تنظيف الكروبات" and Dev(msg) then
 local group = database:smembers(bot_id..'Twix:Chek:Groups')  
 local w = 0
 local q = 0
@@ -7176,7 +7157,7 @@ end,nil)
 end
 return false
 end
-if text == ("تحديث السورس") and DevTwix(msg) then  
+if text == ("تحديث السورس") and Dev(msg) then  
 send(msg.chat_id_,msg.id_,'☑┇تم التحديث')
 os.execute('rm -rf Twix.lua')
 os.execute('rm -rf start.lua')
@@ -7186,15 +7167,15 @@ dofile('Twix.lua')
 return false
 end
 
-if text == 'تفعيل البوت الخدمي' and DevTwix(msg) then  
+if text == 'تفعيل البوت الخدمي' and Dev(msg) then  
 database:del(bot_id..'Twix:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل البوت الخدمي ') 
 end
-if text == 'تعطيل البوت الخدمي' and DevTwix(msg) then  
+if text == 'تعطيل البوت الخدمي' and Dev(msg) then  
 database:set(bot_id..'Twix:Free:Add:Bots',true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل البوت الخدمي') 
 end
-if text and text:match("^تعين عدد الاعضاء (%d+)$") and DevTwix(msg) then
+if text and text:match("^تعين عدد الاعضاء (%d+)$") and Dev(msg) then
 local Num = text:match("تعين عدد الاعضاء (%d+)$") 
 database:set(bot_id..'Twix:Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'👥┇ تم وضع عدد الاعضاء *~'..Num..'* عضو')
@@ -7204,7 +7185,7 @@ local Groups = database:scard(bot_id..'Twix:Chek:Groups')
 local Users = database:scard(bot_id..'Twix:UsersBot')  
 send(msg.chat_id_, msg.id_,'🔘┇احصائيات البوت \n\n👥┇عدد المجموعات *~ '..Groups..'\n👤┇عدد المشتركين ~ '..Users..'*')
 end
-if text == 'جلب نسخه احتياطيه' and DevTwix(msg) then
+if text == 'جلب نسخه احتياطيه' and Dev(msg) then
 local list = database:smembers(bot_id..'Twix:Chek:Groups')  
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
@@ -7282,7 +7263,7 @@ sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
 end,nil)
 end
 end
-if text == 'الملفات' and DevTwix(msg) then
+if text == 'الملفات' and Dev(msg) then
 t = '☑┇جميع الملفات : \n ••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉•• \n'
 i = 0
 for v in io.popen('ls Twix_Files'):lines() do
@@ -7294,7 +7275,7 @@ end
 send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-if DevTwix(msg) then
+if Dev(msg) then
 local Get_Files, res = https.request("https://raw.githubusercontent.com/TwiXsr/files_Twix/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
@@ -7323,7 +7304,7 @@ return false
 end
 end
 
-if text and text:match("^(تعطيل ملف) (.*)(.lua)$") and DevTwix(msg) then
+if text and text:match("^(تعطيل ملف) (.*)(.lua)$") and Dev(msg) then
 local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("Twix_Files/"..file,"r")
@@ -7343,7 +7324,7 @@ send(msg.chat_id_, msg.id_,"*📮┇ عذرا لا يوجد هاكذا ملف ف
 end
 return false
 end
-if text and text:match("^(تفعيل ملف) (.*)(.lua)$") and DevTwix(msg) then
+if text and text:match("^(تفعيل ملف) (.*)(.lua)$") and Dev(msg) then
 local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("Twix_Files/"..file,"r")
@@ -7365,12 +7346,12 @@ send(msg.chat_id_, msg.id_,"*📮┇ عذرا لا يوجد هاكذا ملف ف
 end
 return false
 end
-if text == "مسح جميع الملفات" and DevTwix(msg) then
+if text == "مسح جميع الملفات" and Dev(msg) then
 os.execute("rm -fr Twix_Files/*")
 send(msg.chat_id_,msg.id_,"☑┇تم حذف جميع الملفات")
 return false
 end
-if text == 'نقل الاحصائيات' and DevTwix(msg) then
+if text == 'نقل الاحصائيات' and Dev(msg) then
 local Groups = database:smembers(bot_id..'Chek:Groups') 
 local Users = database:smembers(bot_id..'User_Bot') 
 for i = 1, #Groups do
@@ -7381,11 +7362,11 @@ database:sadd(bot_id..'Twix:UsersBot',Users[i])
 end
 send(msg.chat_id_, msg.id_,'⌔︙تم نقل : '..#Groups..' كروب\n⌔︙تم نقل : '..#Users..' مشترك \n⌔︙من التحديث القديم الى التحديث الجديد')
 end
-if text == 'حذف كليشه المطور' and DevTwix(msg) then
+if text == 'حذف كليشه المطور' and Dev(msg) then
 database:del(bot_id..'Twix:Text_Dev')
 send(msg.chat_id_, msg.id_,'☑┇ تم حذف كليشه المطور')
 end
-if text == 'وضع كليشه المطور' and DevTwix(msg) then
+if text == 'وضع كليشه المطور' and Dev(msg) then
 database:set(bot_id..'Twix:Set:Text_Dev'..msg.chat_id_..':'..msg.sender_user_id_,true)
 send(msg.chat_id_,msg.id_,'📫┇ ارسل الكليشه الان')
 return false
@@ -7401,7 +7382,7 @@ database:del(bot_id..'Twix:Set:Text_Dev'..msg.chat_id_..':'..msg.sender_user_id_
 send(msg.chat_id_,msg.id_,'🔰┇تم حفظ كليشة المطور')
 return false
 end
-if text == 'رفع النسخه الاحتياطيه' and DevTwix(msg) then   
+if text == 'رفع النسخه الاحتياطيه' and Dev(msg) then   
 if tonumber(msg.reply_to_message_id_) > 0 then
 function by_reply(extra, result, success)   
 if result.content_.document_ then 
@@ -7423,7 +7404,7 @@ local cfhoog =  "\n التاريخ : "..os.date("%Y/%m/%d")
 send(msg.chat_id_, msg.id_,cfhoog)
 end
 
-if text == "تحديث" and DevTwix(msg) then
+if text == "تحديث" and Dev(msg) then
 dofile("Twix.lua")  
 send(msg.chat_id_, msg.id_, "☑┇تم التحديث")
 end
@@ -8029,13 +8010,13 @@ end
 
 end ---- Chat_Type = 'GroupBot' 
 end ---- Chat_Type = 'GroupBot' 
-if text == 'تفعيل' and DevBot(msg) and AhMedMember(msg) then 
+if text == 'تفعيل' and DevBot(msg) and then 
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Twix:Num:Add:Bot') or 0) and not DevTwix(msg) then
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Twix:Num:Add:Bot') or 0) and not Dev(msg) then
 send(msg.chat_id_, msg.id_,'👥┇عدد اعضاء المجموعه اقل من *~ {'..(database:get(bot_id..'Twix:Num:Add:Bot') or 0)..'* عضو')
 return false
 end
@@ -8048,7 +8029,7 @@ local Text = '☑️┇تم تفعيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/DevTwix"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8086,7 +8067,7 @@ Text = '🔖┇تم تفعيل مجموعه جديده\n'..
 '\n👥┇عدد اعضاء المجموعه *~ '..NumMember..'*'..
 '\n📬┇اسم المجموعه ~ ['..NameChat..']'..
 '\n📥┇الرابط ~ ['..LinkGp..']'
-if not DevTwix(msg) then
+if not Dev(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
@@ -8094,7 +8075,16 @@ end,nil)
 end,nil) 
 end,nil)
 end
-if text == 'تعطيل' and DevBot(msg) and AhMedMember(msg) then 
+if text == 'تعطيل' and DevBot(msg) then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
 if not database:sismember(bot_id..'Twix:Chek:Groups',msg.chat_id_) then
@@ -8104,7 +8094,7 @@ local Text = '❎┇تم تعطيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/DevTwix"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8133,14 +8123,23 @@ Text = '🔖┇تم تعطيل مجموعه جديده\n'..
 '\n🔧┇ايدي المجموعه ~ `'..IdChat..'`'..
 '\n📥┇اسم المجموعه ~ ['..NameChat..']'..
 '\n📮┇الرابط ~ ['..LinkGp..']'
-if not DevTwix(msg) then
+if not Dev(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
 end,nil) 
 end,nil) 
 end
-if text == 'تفعيل' and not DevBot(msg) and not database:get(bot_id..'Twix:Free:Add:Bots') and AhMedMember(msg) then 
+if text == 'تفعيل' and not DevBot(msg) and not database:get(bot_id..'Twix:Free:Add:Bots') then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
@@ -8158,7 +8157,7 @@ var = 'الادمن'
 else 
 var= 'عضو'
 end
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Twix:Num:Add:Bot') or 0) and not DevTwix(msg) then
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Twix:Num:Add:Bot') or 0) and not Dev(msg) then
 send(msg.chat_id_, msg.id_,'👥┇عدد اعضاء المجموعه اقل من *~ {'..(database:get(bot_id..'Twix:Num:Add:Bot') or 0)..'* عضو')
 return false
 end
@@ -8169,7 +8168,7 @@ local Text = '☑️┇تم تفعيل البوت في المجموعة'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/DevTwix"},
+{text = '⏺️ معرفة المزيد ؟',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8209,7 +8208,7 @@ Text = '🔖┇تم تفعيل مجموعه جديده\n'..
 '\n👥┇عدد اعضاء المجموعه *~ '..NumMember..'*'..
 '\n📬┇اسم المجموعه ~ ['..NameChat..']'..
 '\n📥┇الرابط ~ ['..LinkGp..']'
-if not DevTwix(msg) then
+if not Dev(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
@@ -8222,7 +8221,7 @@ end,nil)
 end
 
 if text == 'الاشتراك الاجباري 📥' then  
-if DevTwix(msg) then
+if Dev(msg) then
 local Text = '🔰┇مرحبا بك في اوامر الاشتراك الاجباري'
 local keyboard = {
 {'تغير رساله الاشتراك 📃','حذف رساله الاشتراك 🚸','تغير الاشتراك ♻️'},
@@ -8234,7 +8233,7 @@ send_inline_key(msg.chat_id_,Text,keyboard)
 return false
 end end
 if text == 'اوامر الاذاعة 📣' then  
-if DevTwix(msg) then
+if Dev(msg) then
 local Text = '📩┇مرحبا بك في كيبورد اوامر الاذاعة'
 local keyboard = {
 {'اذاعه خاص 📡','المطورين 🔱','اذاعه 📡'},
@@ -8247,7 +8246,7 @@ return false
 end end
 if Chat_Type == 'UserBot' then
 if text == '/start' or text == 'رجوع 🔚' then  
-if DevTwix(msg) then
+if Dev(msg) then
 local Text = '📥┇مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'تغير اسم البوت 🔁','الاحصائيات 📊'},
@@ -8273,7 +8272,7 @@ Text = "🔰┇اهلا بك في بوت "..Namebot.." حماية المجموع
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/DevTwiX"},
+{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8299,13 +8298,13 @@ end
 if text == 'قناة السورس 📡 .' then
 Text = [[
 🐲 • Welcome *to* Source
-🚩 • *TeAm* - [”TwiX”](t.me/DevTwix)
+🚩 • *TeAm* - [”TwiX”](t.me/Dev)
  ••••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••••
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '🐉 • TeAM TwiX .',url="t.me/DevTwiX"},
+{text = '🐉 • TeAM TwiX .',url="t.me/Dev"},
 },
 {
 {text = '🗂️ • Source Files', url="https://t.me/FileTwix"},
@@ -8328,7 +8327,7 @@ Text = [[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/DevTwiX"},
+{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8354,13 +8353,13 @@ Text = [[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⏺️| معرفة المزيد ؟',url="t.me/DevTwiX"},
+{text = '⏺️| معرفة المزيد ؟',url="t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if not DevTwix(msg) and not database:sismember(bot_id..'BaN:In:User',msg.sender_user_id_) and not database:get(bot_id..'Texting:In:Bv') then
+if not Dev(msg) and not database:sismember(bot_id..'BaN:In:User',msg.sender_user_id_) and not database:get(bot_id..'Texting:In:Bv') then
 send(msg.sender_user_id_,msg.id_,'📧┇تمت ارسال رسالتك الى ~ ['..UserName..']')    
 tdcli_function({ID ="GetChat",chat_id_=Id_Sudo},function(arg,chat)  
 tdcli_function({ID ="GetChat",chat_id_=msg.sender_user_id_},function(arg,chat)  
@@ -8371,7 +8370,7 @@ if data and data.messages_ and data.messages_[0].content_.sticker_ then
 sendText(Id_Sudo,'👤┇تم ارسال الملصق من ~ ['..string.sub(ta.first_name_,0, 40)..'](tg://user?id='..ta.id_..')',0,'md') 
 return false
 end;end;end,nil);end,nil);end,nil);end,nil);end
-if DevTwix(msg) and msg.reply_to_message_id_ ~= 0  then    
+if Dev(msg) and msg.reply_to_message_id_ ~= 0  then    
 tdcli_function({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)},function(extra, result, success) 
 if result.forward_info_.sender_user_id_ then     
 id_user = result.forward_info_.sender_user_id_    
@@ -8411,7 +8410,7 @@ Text = '📨┇تمت ارسال البصمه اليه .. '
 end     
 sendText(Id_Sudo,Text..'\n'..'👤┇ ~ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')',0,'md') 
 end,nil);end,nil);end,nil);end,nil);end 
-if DevTwix(msg) then
+if Dev(msg) then
 if text == 'تفعيل التواصل ⚡' then  
 database:del(bot_id..'Texting:In:Bv') 
 send(msg.chat_id_, msg.id_,'🔘┇ تم تفعيل التواصل ') 
@@ -8522,22 +8521,22 @@ end,nil)
 end
 return false
 end
-if text and text:match("^تغير الاشتراك ♻️$") and DevTwix(msg) then  
+if text and text:match("^تغير الاشتراك ♻️$") and Dev(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '📮┇حسنآ ارسل لي معرف القناة') 
 return false  
 end
-if text and text:match("^تغير رساله الاشتراك 📃$") and DevTwix(msg) then  
+if text and text:match("^تغير رساله الاشتراك 📃$") and Dev(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '📮┇حسنآ ارسل لي النص الذي تريده مع معرف القناة') 
 return false  
 end
-if text == "حذف رساله الاشتراك 🚸" and DevTwix(msg) then  
+if text == "حذف رساله الاشتراك 🚸" and Dev(msg) then  
 database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_, "📮┇تم مسح رساله الاشتراك ") 
 return false  
 end
-if text == "تفعيل الاشتراك الاجباري ✅" and DevTwix(msg) then  
+if text == "تفعيل الاشتراك الاجباري ✅" and Dev(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_,"♨️┇الاشتراك الاجباري مفعل \n✅┇على القناة ~ ["..addchusername.."]") 
@@ -8547,13 +8546,13 @@ send(msg.chat_id_, msg.id_,"🚸┇اهلا عزيزي المطور \n🔖┇ا�
 end
 return false  
 end
-if text == "تعطيل الاشتراك الاجباري ⛔" and DevTwix(msg) then  
+if text == "تعطيل الاشتراك الاجباري ⛔" and Dev(msg) then  
 database:del(bot_id..'add:ch:id')
 database:del(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "☑️┇تم تعطيل الاشتراك الاجباري ") 
 return false  
 end
-if text == "الاشتراك الاجباري 🚸" and DevTwix(msg) then  
+if text == "الاشتراك الاجباري 🚸" and Dev(msg) then  
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "☑️┇تم تفعيل الاشتراك الاجباري \n♨️┇على القناة ~ ["..addchusername.."]") 
@@ -8580,7 +8579,7 @@ end
 return false  
 end
 if text=="اذاعه خاص 📡" and msg.reply_to_message_id_ == 0 then
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8589,7 +8588,7 @@ send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحر
 return false
 end 
 if text=="اذاعه 📡" and msg.reply_to_message_id_ == 0 then
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8598,7 +8597,7 @@ send(msg.chat_id_, msg.id_,"🔘┇ارسل لي سواء ~ { ملصق, متحر
 return false
 end  
 if text=="اذاعه بالتوجيه 👥" and msg.reply_to_message_id_ == 0  then
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8607,7 +8606,7 @@ send(msg.chat_id_, msg.id_,"📥┇ارسل لي التوجيه الان")
 return false
 end 
 if text=="اذاعه بالتوجيه خاص 👤" and msg.reply_to_message_id_ == 0  then
-if database:get(bot_id.."Twix:Status:Bc") and not DevTwix(msg) then 
+if database:get(bot_id.."Twix:Status:Bc") and not Dev(msg) then 
 send(msg.chat_id_, msg.id_,"📫┇الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8631,7 +8630,7 @@ send(msg.chat_id_, msg.id_,"📫┇تم تفعيل مغادرة البوت")
 return false 
 end
 if text == "تغير اسم البوت 🔁"  then 
-if DevTwix(msg) then
+if Dev(msg) then
 database:setex(bot_id.."Twix:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل لي الاسم الان ")  
 end
@@ -8662,16 +8661,16 @@ if text == 'حذف كليشه ستارت 🃏' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
 end
-if text == ("مسح قائمه العام 📮") and DevTwix(msg) then
+if text == ("مسح قائمه العام 📮") and Dev(msg) then
 database:del(bot_id.."Twix:GBan:User")
 send(msg.chat_id_, msg.id_, "\n📮┇تم مسح قائمه العام")
 return false
 end
-if text == ("مسح المطورين 🚸") and DevTwix(msg) then
+if text == ("مسح المطورين 🚸") and Dev(msg) then
 database:del(bot_id.."Twix:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n📮┇ تم مسح قائمة المطورين  ")
 end
-if text == ("قائمة العام 📃") and DevTwix(msg) then
+if text == ("قائمة العام 📃") and Dev(msg) then
 local list = database:smembers(bot_id.."Twix:GBan:User")
 t = "\n⛔┇قائمة المحظورين عام \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉•• \n"
 for k,v in pairs(list) do
@@ -8688,7 +8687,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("المطورين 🔱") and DevTwix(msg) then
+if text == ("المطورين 🔱") and Dev(msg) then
 local list = database:smembers(bot_id.."Twix:Sudo:User")
 t = "\n⛔┇قائمة مطورين البوت \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉•• \n"
 for k,v in pairs(list) do
@@ -11372,7 +11371,7 @@ end
 end
 end
 
-if text and DevTwix(msg) and database:get(bot_id.."Twix:witt:Del_All"..msg.sender_user_id_..":"..msg.chat_id_) then
+if text and Dev(msg) and database:get(bot_id.."Twix:witt:Del_All"..msg.sender_user_id_..":"..msg.chat_id_) then
    database:del(bot_id.."Twix:witt:Del_All"..msg.sender_user_id_..":"..msg.chat_id_)
    if database:hdel(bot_id..':Replay:Source:',text) == 0 then 
    send(msg.chat_id_, msg.id_, '📛┇ لا يوجد هذا الكلمه في قائمه الردود !')
@@ -11650,7 +11649,7 @@ if audios.Info == true then
 local Text ='- تم اختيار المقطع الصوتي لك'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '⏺️ معرفة المزيد ؟',url="t.me/DevTwiX"}},
+{{text = '⏺️ معرفة المزيد ؟',url="t.me/Dev"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -11705,7 +11704,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇نسبة
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendnum..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendnum..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11726,7 +11725,7 @@ local Text = '⌯ اليك النتائج الخـاصة :\n\n⌯ نسبه ال�
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendnum..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendnum..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11747,7 +11746,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇ نسب�
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendnuj..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendnuj..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11768,7 +11767,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇ نسب�
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendnuj..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendnuj..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11789,7 +11788,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇ نوع 
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = ''..sendnmj..' ‹‹-',url="https://t.me/DevTwiX"},
+{text = ''..sendnmj..' ‹‹-',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11810,7 +11809,7 @@ local Text = '📥┇ اليك النتائج الخـاصة :\n\n📮┇ نوع
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = ''..sendnuk..' ‹‹-',url="https://t.me/DevTwiX"},
+{text = ''..sendnuk..' ‹‹-',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11831,7 +11830,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇نسبة
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendnnk..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendnnk..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11852,7 +11851,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇نسبة
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendzff..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendzff..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
@@ -11873,7 +11872,7 @@ local Text = '📥┇اليك النتائج الخـاصة :\n\n📮┇نسبة
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⌁ '..sendhen..'%',url="https://t.me/DevTwiX"},
+{text = '⌁ '..sendhen..'%',url="https://t.me/Dev"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
