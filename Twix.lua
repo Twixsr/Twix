@@ -8010,7 +8010,7 @@ end
 
 end ---- Chat_Type = 'GroupBot' 
 end ---- Chat_Type = 'GroupBot' 
-if text == 'تفعيل' and DevBot(msg) and AhMedMember(msg) then 
+if text == 'تفعيل' and DevBot(msg) then
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
