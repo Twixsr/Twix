@@ -581,7 +581,7 @@ end
 function Reply_Status(msg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,data) 
 if data.first_name_ ~= false then
-local UserName = (data.username_ or "FileTwix")
+local UserName = (data.username_ or "ieeo3s")
 for Twix in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = Twix
 end
@@ -5510,7 +5510,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"🔘┇ حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "FileTwix")
+local UserName = (b.username_ or "ieeo3s")
 send(msg.chat_id_, msg.id_,"🚸┇منشئ المجموعه ~ ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
@@ -5530,7 +5530,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"📬┇حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "FileTwix")
+local UserName = (b.username_ or "ieeo3s")
 send(msg.chat_id_, msg.id_,"🚸┇تم ترقية منشئ المجموعه ~ ["..b.first_name_.."](T.me/"..UserName..")")  
 database:sadd(bot_id.."Twix:Basic:Constructor"..msg.chat_id_,b.id_)
 end,nil)   
@@ -7354,7 +7354,7 @@ local json_file, res = https.request("https://raw.githubusercontent.com/Twixsr/F
 if res == 200 then
 os.execute("rm -fr Twix_Files/"..file)
 send(msg.chat_id_, msg.id_,t) 
-dofile('FileTwix.lua')  
+dofile('ieeo3s.lua')  
 else
 send(msg.chat_id_, msg.id_,"*📮┇ عذرا لا يوجد هاكذا ملف في المتجر *\n") 
 end
@@ -7376,7 +7376,7 @@ local chek = io.open("Twix_Files/"..file,'w+')
 chek:write(json_file)
 chek:close()
 send(msg.chat_id_, msg.id_,t) 
-dofile('FileTwix.lua')  
+dofile('ieeo3s.lua')  
 else
 send(msg.chat_id_, msg.id_,"*📮┇ عذرا لا يوجد هاكذا ملف في المتجر *\n") 
 end
@@ -7870,59 +7870,6 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
 end
-if text == 'تفعيل التاك' or text == 'تفعيل all' and Constructor(msg) then   
-if database:get(bot_id..'Cick:all'..msg.chat_id_) then
-Text = '💢️┇تم تفعيل امر @all'
-database:del(bot_id..'Cick:all'..msg.chat_id_)  
-else
-Text = '💢️┇بالتاكيد تم تفعيل امر @all'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل التاك' or text == 'تعطيل all' and Constructor(msg) then  
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-database:set(bot_id..'Cick:all'..msg.chat_id_,true)  
-Text = '\n💢️┇تم تعطيل امر @all'
-else
-Text = '\n💢️┇بالتاكيد تم تعطيل امر @all'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-
-if text == "@all" or text == 'all' and Constructor(msg) then
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-if database:get(bot_id.."cccbcc:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
-return 
-send(msg.chat_id_, msg.id_,"💢️┇انتظر دقيقه من فضلك")
-end
-database:setex(bot_id..'cccbcc:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
-tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
-tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,amir)
-x = 0
-tags = 0
-local list = amir.members_
-for k, v in pairs(list) do
-tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
-if x == 5 or x == tags or k == 0 then
-tags = x + 5
-t = "#all"
-end
-x = x + 1
-tagname = data.first_name_
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
-if x == 5 or x == tags or k == 0 then
-local Text = t:gsub('#all,','#all\n')
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
-end
-end,nil)
-end
-end,nil)
-end,nil)
-end
-end
 ------------------------------------------------------------------------
 if text == 'اوامر القفل' and Addictive(msg) then
 local Texti = 'تستطيع قفل وفتح عبر الازرار'
@@ -8325,22 +8272,22 @@ end
 if text == 'قناة السورس 📡 .' then
 Text = [[
 🐲 • Welcome *to* Source
-🚩 • *TeAm* - [”TwiX”](t.me/Dev)
+🚩 • *TeAm* - [”TwiX”](t.me/ieeo3s)
  ••••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••••
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '🐉 • TeAM TwiX .',url="t.me/Dev"},
+{text = '🐉 • TeAM TwiX .',url="t.me/ieeo3s"},
 },
 {
-{text = '🗂️ • Source Files', url="https://t.me/FileTwix"},
+{text = '🗂️ • Source Information', url="https://t.me/TKSLX"},
 },
 {
-{text = '📥 • Ch app iD ',url="https://t.me/Gverr"},
+{text = '📥 • Developer ',url="https://t.me/XPKKK"},
 },
 {
-{text = '📮 • Bot TwisL', url="t.me/Y_8ibot"},
+{text = '📮 • Bot TwisL', url="https://t.me/llIsIlI_bot"},
 },
 }
 local msg_id = msg.id_/2097152/0.5
