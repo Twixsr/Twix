@@ -5203,15 +5203,25 @@ database:del(bot_id.."Twix:Mod:User"..msg.chat_id_)
 database:del(bot_id.."Twix:Special:User"..msg.chat_id_)
 end
 if text == "تاك للكل" and Addictive(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""), offset_ = 0,limit_ = 200},function(ta,taha)
 local t = "\n⛔┇ قائمة الاعضاء \n━━━━━━━━━━━━━\n"
 x = 0
 local list = taha.members_
 for k, v in pairs(list) do
 x = x + 1
-if database:get(bot_id.."Twix:User:Name"..v.user_id_) then
-t = t..""..x.." - {[@"..database:get(bot_id.."Twix:User:Name"..v.user_id_).."]}\n"
+if database:get(bot_id.."User:Name"..v.user_id_) then
+t = t..""..x.." - [@"..database:get(bot_id.."User:Name"..v.user_id_).."]\n"
 else
+t = t..""..x.." - "..v.user_id_.."\n"
 end
 end
 send(msg.chat_id_,msg.id_,t)
@@ -7994,6 +8004,15 @@ end
 end ---- Chat_Type = 'GroupBot' 
 end ---- Chat_Type = 'GroupBot' 
 if text == 'تفعيل' and DevBot(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
 return false  
