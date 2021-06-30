@@ -8273,6 +8273,15 @@ database:setex(bot_id..'Twix:Start:Time'..msg.sender_user_id_,60,true)
 return false
 end
 if text == '/play' then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽\n • ⚜️  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 local Text = '*مرحبا بك في العاب البوت اختر ما تريد *'
 local keyboard = {
 {'نسبة الخيانة','نسبة الزحف'},
