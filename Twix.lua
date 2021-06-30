@@ -6420,12 +6420,19 @@ local Num_Games = database:get(bot_id.."Tshak:Add:Num"..msg.chat_id_..msg.sender
 local Add_Mem = database:get(bot_id.."Twix:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
+"بيك كورونا🦠",
+"صورتك تعبر عن سفالتك😡",
+"لاخلقه ولا اخلاق🌚",
+"ملاك وناسيك بكروبنا💋",
+"شهل الگيمر 💋💖",
+"قله ذوق🤢",
+"ممكن سيلفي🤳🏻",
+"ممكن نجي خطابه❤️🤤",
+"نوتلا🙊❤️",
+"افيش ممكن بوسه 😋😍",
+"اطلق صوره❤️🐼",
+"شهل كاكاو🤤❤️",
+"هذا الحلو فدوة 😍❤️",
 }
 local Description = Texting[math.random(#Texting)]
 local get_id = database:get(bot_id.."Twix:Klesh:Id:Bot"..msg.chat_id_) or database:get(bot_id.."Twix:KleshIDALLBOT")
@@ -6452,11 +6459,11 @@ keyboard.inline_keyboard = {
 },
 }
 local msg_id = msg.id_/2097152/0.5
-local texte = '⌔︙'..Description..'\n⌔︙ايديك  . '..Id..'\n⌔︙معرفك  . '..UserName_User..'\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙الالعاب  . '..Num_Games
+local texte = '⌔︙'..Description..'\n⌔︙ايديك  . '..Id..'\n⌔︙معرفك  . '..UserName_User..'\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(texte)..'&photo='..taha.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 else
-local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙الالعاب  . '..Num_Games..'*'
+local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games..'*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
@@ -6482,7 +6489,7 @@ local texte = '['..get_id..']'
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
 else
-local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙الالعاب  . '..Num_Games..'*'
+local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games..'*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
@@ -8820,7 +8827,7 @@ local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.send
 local Add_Mem = database:get(bot_id.."Twix:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
-'"بيك كورونا🦠",
+"بيك كورونا🦠",
 "صورتك تعبر عن سفالتك😡",
 "لاخلقه ولا اخلاق🌚",
 "ملاك وناسيك بكروبنا💋",
@@ -8895,7 +8902,7 @@ local Texting = {
 "هذا الحلو فدوة 😍❤️",
 }
 local Description = Texting[math.random(#Texting)]
-local texte = '\n⌔︙ايديك  . '..Id..'\n⌔︙معرفك  . '..UserName_User..'\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراة  . '..Num_Games..''
+local texte = '\n⌔︙ايديك  . '..Id..'\n⌔︙معرفك  . '..UserName_User..'\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games..''
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
@@ -8957,7 +8964,7 @@ local Texting = {
 "هذا الحلو فدوة 😍❤️",
 }
 local Description = Texting[math.random(#Texting)]
-local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراة  . '..Num_Games..'*'
+local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games..'*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
@@ -9142,7 +9149,7 @@ local Texting = {
 "هذا الحلو فدوة 😍❤️",
 }
 local Description = Texting[math.random(#Texting)]
-local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراة  . '..Num_Games..'*'
+local texte = '\n*⌔︙ايديك  . '..Id..'\n⌔︙معرفك  .* ['..UserName_User..']*\n⌔︙رتبتك  . '..Status_Gps..'\n⌔︙رسائلك  . '..NumMsg..' \n⌔︙التفاعل . '..TotalMsg..'\n⌔︙مجوهراتك  . '..Num_Games..'*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
