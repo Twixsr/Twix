@@ -8257,16 +8257,11 @@ local start = database:get(bot_id.."Start:Bot")
 if start then 
 Test = start
 else
-Text = "🔰┇اهلا بك في بوت "..Namebot.." حماية المجموعات\n🔘┇يمكن اضافتي الى مجموعتك مشرف وتفعيلي\n☑️┇معرف مطور البوت : "..UserName.." \n\n🎮┇للعب مع البوت ارسل  : /play \n••┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉••"
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '⏺️| معرفة المزيد ؟',url="https://t.me/ieeo3s"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
+tdcli_function ({ID = "GetUser",user_id_ = Sudo},function(arg,data) 
+Test = '⌔︙مرحبا انا بوت حماية كروبات\n⌔︙وضيفتي حماية المجموعات من السبام والتفليش والخ...\n⌔︙لتفعيل البوت اضفني الى مجموعاتك قم برفعي مشرف ثم ارسل تفعيل \n⌔︙معرف المطور @['..data.username_..']'
+end,nil)
+end 
+send(msg.chat_id_, msg.id_, Test) 
 end
 end
 database:setex(bot_id..'Twix:Start:Time'..msg.sender_user_id_,60,true)
