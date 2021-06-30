@@ -8013,10 +8013,6 @@ send(msg.chat_id_, msg.id_,'• لايمكنك استخدام البوت ✅ •
 end
 return false
 end
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,'🚸┇البوت ليس ادمن يرجى ترقيتي !') 
-return false  
-end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Twix:Num:Add:Bot') or 0) and not Dev(msg) then
 send(msg.chat_id_, msg.id_,'👥┇عدد اعضاء المجموعه اقل من *~ {'..(database:get(bot_id..'Twix:Num:Add:Bot') or 0)..'* عضو')
