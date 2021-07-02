@@ -62,7 +62,7 @@ io.write('\n\27[1;31mThe UserName was not Saved\n\27[0;39;49m')
 end 
 os.execute('lua start.lua')
 end
-#!/usr/bin/env bash
+!/usr/bin/env bash
 cd $HOME/Twix
 token="]]..database:get(Server_Twix.."Token_Twix")..[["
 rm -fr Twix.lua
