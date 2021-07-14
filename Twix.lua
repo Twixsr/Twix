@@ -5126,7 +5126,12 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 end
-
+if text == 'تنزيل الكل' and BasicConstructor(msg) then
+database:del(bot_id.."Twix:Mod:User"..msg.chat_id_)
+database:del(bot_id.."Twix:Manager"..msg.chat_id_)
+database:del(bot_id.."Twix:Constructor"..msg.chat_id_)
+send(msg.chat_id_, msg.id_,"\n✫: تم تنزيل جميع الرتب التـالية \n\n✫: المنشئين , المدراء , الادمنيه")
+end
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Owner(msg) then
 function Function_Twix(extra, result, success)
 if tonumber(SUDO) == tonumber(result.sender_user_id_) then
@@ -5542,8 +5547,8 @@ end
 
 
 
-if text == (database:get(bot_id.."Name:Bot") or "تويكس") then      
-Namebot = (database:get(bot_id.."Name:Bot") or "تويكس")
+if text == (database:get(bot_id.."Twix:Name:Bot") or "تويكس") then      
+Namebot = (database:get(bot_id.."Twix:Name:Bot") or "تويكس")
 local namebot = {
 'ۿۧهلا ؏ـمࢪي .',
 'اكلك تحبني ؟ وتصيحني هلكد',
@@ -5558,7 +5563,7 @@ return false
 end
 
 if text == 'بوت' then
-Namebot = (database:get(bot_id..'Name:Bot') or 'تويكس')
+Namebot = (database:get(bot_id..'Twix:Name:Bot') or 'تويكس')
 local nameee = {
 'اسمي '..Namebot..'',
 'راح نموت بكورونا ونته بعدك تصيح بوت',
@@ -6580,6 +6585,8 @@ database:sadd(bot_id.."msg:media"..msg.chat_id_, msg.id_)
 end
 
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
+if not database:sismember(bot_id..'Twix:Spam:Group'..msg.sender_user_id_,text) then
+database:sadd(bot_id.."Twix:Spam:Group"..msg.sender_user_id_,text) 
 function Function_Twix(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.first_name_ == false then
@@ -6612,8 +6619,12 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_Twix, nil)
 return false
 end
+end
 
 if text and text:match("^ايدي @(.*)$") and not database:get(bot_id..'Twix:Lock:ID:Bot'..msg.chat_id_) then
+if not database:sismember(bot_id..'Twix:Spam:Group'..msg.sender_user_id_,text) then
+print(text)
+database:sadd(bot_id.."Twix:Spam:Group"..msg.sender_user_id_,text) 
 local username = text:match("^ايدي @(.*)$")
 function Function_Twix(extra, result, success)
 if result.id_ then
@@ -6646,6 +6657,7 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_Twix, nil)
 return false
+end
 end
 
 
@@ -7104,6 +7116,13 @@ local Text = '✫: عدد رسائلك هنا *~ '..nummsg..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'مسح رسائلي' then
+if AddChannel(msg.sender_user_id_) == false then
+keyboard = {} 
+keyboard.inline_keyboard = {{{text = 'اضغط للاشتراك', url="t.me/ieeo3s"},},}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape("✫: لايمكنك استخدام البوت ✫: ↯ .\n✫: عليك الاشتراك في القناة ✫: ↯ .").."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
 database:del(bot_id..'Twix:messageUser'..msg.chat_id_..':'..msg.sender_user_id_)
 local Text = '✫: تم مسح جميع رسائلك '
 send(msg.chat_id_, msg.id_,Text) 
@@ -7565,7 +7584,7 @@ keyboard.inline_keyboard = {
 {text = '🗂️ • Source Information', url="https://t.me/TKSLX"},
 },
 {
-{text = '📥 • Developer ',url="https://t.me/XPKKK"},
+{text = '📥 • Developer ',url="https://t.me/PPPPPE"},
 },
 {
 {text = '📮 • Bot TwisL', url="https://t.me/llIsIlI_bot"},
@@ -8065,6 +8084,13 @@ if msg.can_be_deleted_ == false then
 send(msg.chat_id_, msg.id_,'✫: البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
+if AddChannel(msg.sender_user_id_) == false then
+keyboard = {} 
+keyboard.inline_keyboard = {{{text = 'اضغط للاشتراك', url="t.me/ieeo3s"},},}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape("✫: لايمكنك استخدام البوت ✫: ↯ .\n✫: عليك الاشتراك في القناة ✫: ↯ .").."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
@@ -8086,14 +8112,9 @@ if database:sismember(bot_id..'Twix:Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'✫: المجموعه مفعله سابقا ')
 else
 local Text = '✫: تم تفعيل البوت في المجموعة'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '⏺️ معرفة المزيد ؟',url="https://t.me/ieeo3s"},
-},
-}
+
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
 database:sadd(bot_id..'Twix:Chek:Groups',msg.chat_id_)  
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
@@ -8233,7 +8254,7 @@ keyboard.inline_keyboard = {
 {text = '🗂️ • Source Information', url="https://t.me/TKSLX"},
 },
 {
-{text = '📥 • Developer ',url="https://t.me/XPKKK"},
+{text = '📥 • Developer ',url="https://t.me/PPPPPE"},
 },
 {
 {text = '📮 • Bot TwisL', url="https://t.me/llIsIlI_bot"},
@@ -11312,7 +11333,17 @@ end
 
 if data.ID == "UpdateChannel" then 
 if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
+tdcli_function({ID ="GetChat",chat_id_='-100'..data.channel_.id_},function(arg,chat)  
+local NameChat = chat.title_
+NameChat = NameChat:gsub('"',"") 
+NameChat = NameChat:gsub('"',"") 
+NameChat = NameChat:gsub("`","") 
+NameChat = NameChat:gsub("*","") 
+NameChat = NameChat:gsub("{","") 
+NameChat = NameChat:gsub("}","") 
+send(Id_Sudo,0,"❈┇قام شخص بطرد البوت من المجموعه الاتيه : \n❈┇ألايدي : `-100"..data.channel_.id_.."`\n❈┇الـمجموعه : "..NameChat.."\n❈┇تـم مسح كل بيانات المجموعه بنـجاح ")
 database:srem(bot_id..'Twix:Chek:Groups','-100'..data.channel_.id_)  
+end,nil)   
 end
 end
 if (data.ID == "UpdateNewMessage") then
